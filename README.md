@@ -1,2 +1,5 @@
-# wineblog
-WordPress child theme for "Vintelligentsia" blog about wine.
+# Vintelligentsia site theme
+#### created by Anneliese Dehner and @jeremymcwilliams
+#### modified by @thatbudakguy
+
+This theme is a child of X (http://theme.co/x/) by Themeco.
