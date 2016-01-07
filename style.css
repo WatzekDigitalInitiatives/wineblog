@@ -38,13 +38,13 @@ Template: x
 
 .entry-footer a, .x-li-icon a {
 color: #990012;
-border-color:#990012; 
+border-color:#990012;
 
 }
 
 .widget_tag_cloud .tagcloud a, .widget_product_tag_cloud .tagcloud a {
 color: #990012;
-border-color:#990012; 
+border-color:#990012;
 }
 
 
@@ -83,10 +83,12 @@ background-color: #990012;
 
 .x-portfolio .entry-info{width: 100%;}
 
+/*
+.entry-thumb img {
+  display: none;
+}
+*/
 
-
-
-
-
-
-
+.entry-thumb {}
+.entry-thumb img {}
+.entry-thumb:before {}

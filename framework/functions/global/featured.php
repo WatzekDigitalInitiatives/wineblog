@@ -49,10 +49,10 @@ if ( ! function_exists( 'x_featured_image' ) ) :
 
       switch ( is_singular() ) {
         case true:
-          printf( '<div class="entry-thumb">%s</div>', $thumb );
+          printf( '<div>%s</div>', $thumb );
           break;
         case false:
-          printf( '<a href="%1$s" class="entry-thumb" title="%2$s">%3$s</a>',
+          printf( '<a href="%1$s" title="%2$s">%3$s</a>',
             esc_url( get_permalink() ),
             esc_attr( sprintf( __( 'Permalink to: "%s"', '__x__' ), the_title_attribute( 'echo=0' ) ) ),
             $thumb

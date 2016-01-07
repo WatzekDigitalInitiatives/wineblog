@@ -11,8 +11,17 @@ $archive_share = x_get_option( 'x_integrity_portfolio_archive_post_sharing_enabl
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-  <div class="entry-featured">
-    <?php x_portfolio_item_featured_content(); ?>
+  <div class="entry-featured card">
+    <div class="front">
+      <!-- use the child theme's function to display the Portfolio featured image without a hover effect -->
+      <?php vint_portfolio_item_featured_content(); ?>
+    </div>
+    <div class="back">
+      <?php
+        echo "<h1>testing</h1>";
+        //use wordpress functions to pull in the correct text here
+      ?>
+    </div>
   </div>
   <div class="entry-wrap cf">
 
