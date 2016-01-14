@@ -28,7 +28,8 @@ add_action('x_before_the_content_end', function() {
 
 // Add in JS for flip effect
 function vint_scripts() {
-	wp_enqueue_script( 'script-name', 'https://cdn.rawgit.com/nnattawat/flip/v1.0.18/dist/jquery.flip.min.js', array('jquery'));
+	//wp_enqueue_script( 'flip.js', 'https://cdn.rawgit.com/nnattawat/flip/v1.0.18/dist/jquery.flip.min.js', array('jquery'));
+  //wp_enqueue_script( 'vintflip.js', '/wp-content/themes/x-child/framework/views/integrity/vintflip.js');
 }
 add_action( 'wp_enqueue_scripts', 'vint_scripts' );
 
@@ -116,10 +117,10 @@ if ( ! function_exists( 'vint_featured_image' ) ) :
 
       switch ( is_singular() ) {
         case true:
-          printf( '<div>%s</div>', $thumb );
+          printf( '<div class="truimg">%s</div>', $thumb );
           break;
         case false:
-          printf( '<a href="%1$s" title="%2$s">%3$s</a>',
+          printf( '<div class="truimg"><a href="%1$s" title="%2$s">%3$s</a></div>',
             esc_url( get_permalink() ),
             esc_attr( sprintf( __( 'Permalink to: "%s"', '__x__' ), the_title_attribute( 'echo=0' ) ) ),
             $thumb

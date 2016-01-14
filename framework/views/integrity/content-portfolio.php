@@ -11,48 +11,40 @@ $archive_share = x_get_option( 'x_integrity_portfolio_archive_post_sharing_enabl
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-  <div class="entry-featured card">
-    <div class="front">
-      <!-- use the child theme's function to display the Portfolio featured image without a hover effect -->
-      <?php vint_portfolio_item_featured_content(); ?>
+    <?php
+      //use wordpress functions to pull in the correct text here
+      $excerpt = the_excerpt();
+      printf($excerpt);
+    ?>
+    <div class="entry-featured">
+        <!-- use the child theme's function to display the Portfolio featured image without a hover effect -->
+        <?php vint_portfolio_item_featured_content(); ?>
     </div>
-    <div class="back">
-      <?php
-        echo "<h1>testing</h1>";
-        //use wordpress functions to pull in the correct text here
-      ?>
-    </div>
-  </div>
-  <div class="entry-wrap cf">
+    <div class="entry-wrap cf">
 
-    <?php if ( x_is_portfolio_item() ) : ?>
+      <?php if ( x_is_portfolio_item() ) : ?>
 
-      <div class="entry-info">
+        <div class="entry-info">
+          <header class="entry-header">
+            <h1 class="entry-title entry-title-portfolio"><?php the_title(); ?></h1>
+                    <?php x_portfolio_item_tags(); ?>
+            <?php x_integrity_entry_meta(); ?>
+          </header>
+          <?php x_get_view( 'global', '_content', 'the-content' ); ?>
+        </div>
+
+      <?php else : ?>
+
         <header class="entry-header">
-          <h1 class="entry-title entry-title-portfolio"><?php the_title(); ?></h1>
-                  <?php x_portfolio_item_tags(); ?>
-          <?php x_integrity_entry_meta(); ?>
+          <h2 class="entry-title entry-title-portfolio">
+            <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to: "%s"', '__x__' ), the_title_attribute( 'echo=0' ) ) ); ?>"><?php x_the_alternate_title(); ?></a>
+          </h2>
+          <?php if ( $archive_share == '1' ) : ?>
+            <?php x_portfolio_item_social(); ?>
+          <?php endif; ?>
         </header>
-        <?php x_get_view( 'global', '_content', 'the-content' ); ?>
-      </div>
-      <!--<div class="entry-extra">-->
 
-        <?php #x_portfolio_item_project_link(); ?>
-        <?php #x_portfolio_item_social(); ?>
-      <!--</div>--->
+      <?php endif; ?>
 
-    <?php else : ?>
-
-      <header class="entry-header">
-        <h2 class="entry-title entry-title-portfolio">
-          <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to: "%s"', '__x__' ), the_title_attribute( 'echo=0' ) ) ); ?>"><?php x_the_alternate_title(); ?></a>
-        </h2>
-        <?php if ( $archive_share == '1' ) : ?>
-          <?php x_portfolio_item_social(); ?>
-        <?php endif; ?>
-      </header>
-
-    <?php endif; ?>
-
-  </div>
+    </div>
 </article>
