@@ -1,9 +1,11 @@
-jQuery(document).ready(function($) {
+/*
 
   //assign the classes to generate cards
+  /*
   $("article").addClass("card");
   $(".truimg").addClass("front");
   $(".truimg").css("display","block");
+
 
   //setup CSS for card backs
   $(".card").each(function(){
@@ -28,4 +30,4 @@ jQuery(document).ready(function($) {
   //remove auto-added CSS after flip is enabled
   $(".front").css("position", "");
 
-});
+*/

@@ -26,12 +26,16 @@ add_action('x_before_the_content_end', function() {
   echo do_shortcode('[share title="Share this Post" facebook="true" twitter="true"  email="true"]');
 });
 
-// Add in JS for flip effect
-function vint_scripts() {
-	//wp_enqueue_script( 'flip.js', 'https://cdn.rawgit.com/nnattawat/flip/v1.0.18/dist/jquery.flip.min.js', array('jquery'));
-  //wp_enqueue_script( 'vintflip.js', '/wp-content/themes/x-child/framework/views/integrity/vintflip.js');
+// Custom excerpt length for portflios
+function vint_excerpt_length( $length ) {
+   global $post;
+   if ($post->post_type == 'post')
+   return 55;
+   else if ($post->post_type == 'x-portfolio')
+   return 150;
 }
-add_action( 'wp_enqueue_scripts', 'vint_scripts' );
+add_filter( 'excerpt_length', 'vint_excerpt_length', 999 );
+
 
 // Output Portfolio Item Featured Content
 // =============================================================================
@@ -59,7 +63,7 @@ if ( ! function_exists( 'vint_featured_portfolio' ) ) :
     if ( is_singular() ) {
       switch ( $media ) {
         case 'Image' :
-          vint_featured_image();
+          x_featured_image();
           break;
         case 'Gallery' :
           x_featured_gallery();

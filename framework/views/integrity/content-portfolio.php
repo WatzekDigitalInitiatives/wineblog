@@ -11,16 +11,32 @@ $archive_share = x_get_option( 'x_integrity_portfolio_archive_post_sharing_enabl
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-    <?php
-      //use wordpress functions to pull in the correct text here
-      $excerpt = the_excerpt();
-      printf($excerpt);
-    ?>
-    <div class="entry-featured">
-        <!-- use the child theme's function to display the Portfolio featured image without a hover effect -->
-        <?php vint_portfolio_item_featured_content(); ?>
-    </div>
-    <div class="entry-wrap cf">
+<?php
+$cur = $_SERVER["REQUEST_URI"];
+$tru = strpos($cur, 'portfolio');
+$item = strpos($cur, 'item');
+if ($tru && !$item){
+  echo '<div class="flip-container" ontouchstart="this.classList.toggle(\'hover\');">
+        <div class="flipper">
+        <div class="front">';
+}
+?>
+        <div class="entry-featured">
+          <!-- use the child theme's function to display the Portfolio featured image without a hover effect -->
+          <?php vint_portfolio_item_featured_content(); ?>
+        </div>
+<?php
+if ($tru && !$item){
+  echo '</div>
+        <div class="back">';
+          $excerpt = the_excerpt();
+          printf($excerpt);
+  echo '</div>
+      </div>
+      </div>';
+}
+?>
+  <div class="entry-wrap cf">
 
       <?php if ( x_is_portfolio_item() ) : ?>
 
@@ -46,5 +62,5 @@ $archive_share = x_get_option( 'x_integrity_portfolio_archive_post_sharing_enabl
 
       <?php endif; ?>
 
-    </div>
+  </div>
 </article>
